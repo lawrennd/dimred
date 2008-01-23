@@ -23,7 +23,8 @@ function [Y, colourmap] = generateManifoldData(dataType, options)
 % COPYRIGHT : Carl Henrik Ek, 2007
 %
 % COPYRIGHT : Neil D. Lawrence, 2008
- 
+
+% DIMRED
   
 if nargin < 2
   options.display = false;

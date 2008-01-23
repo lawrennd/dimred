@@ -2,6 +2,7 @@
 
 % COPYRIGHT : Neil D. Lawrence, 2008
 
+% DIMRED
 
 randn('seed', 1e6);
 rand('seed', 1e6);

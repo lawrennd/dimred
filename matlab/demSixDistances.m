@@ -3,8 +3,7 @@ function e = demSixDistances(q, rotate)
 % DEMSIXDISTANCES Plot distance matrix associated with the rotated six data.
 % FORMAT
 % DESC provides a color image of the distance matrix associated with the
-% rotated six data. The file prepDemManifold must be fun first to
-% generate the data set.
+% rotated six data. 
 %
 % DESC provides color images of the distance matrix associated with the
 % rotated six data when selecting dimensions to retain through their

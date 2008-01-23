@@ -1,6 +1,6 @@
 function [epsFileName, pngFileName] = dimredPrepPlot(ax, name)
   
-% DIMREDPREPLOT Dimensional reduction plot preparation.
+% DIMREDPREPPLOT Dimensional reduction plot preparation.
 % FORMAT
 % DESC prepares a dimensional reduction toolbox plot by formating axes
 % etc. 
@@ -10,6 +10,8 @@ function [epsFileName, pngFileName] = dimredPrepPlot(ax, name)
 % COPYRIGHT : Neil D. Lawrence, 2008
 %
 % SEEALSO : generateManifoldData
+  
+% DIMRED
 
 set(ax, 'fontName', 'helvetica');
 set(ax, 'fontsize', 18);
