@@ -48,6 +48,20 @@ colorbar
 print('-depsc', fname);
 %~/
 
+figure
+imagesc(K)
+axis equal
+set(gca, 'xlim', [0 360]);
+set(gca, 'ylim', [0 360]);
+set(gca, 'xtick', [0 90 180 270 360])
+set(gca, 'ytick', [0 90 180 270 360])
+set(gca, 'Xaxislocation', 'top')
+fname = dimredPrepPlot(gca, ['demSixKpcaCovariance']);
+colorbar
+%/~
+print('-depsc', fname);
+%~/
+
 if q>7
   figure
   h = plot3(X(:, 5), X(:, 6), X(:, 7), 'b.')
