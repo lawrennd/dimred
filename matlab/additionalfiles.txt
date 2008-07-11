@@ -1,0 +1,15 @@
+# These are files that should be packaged for the DIMRED software
+dir: html
+~/mlprojects/dimred/html/index.html
+~/mlprojects/dimred/html/demManifoldPrint1.png
+~/mlprojects/dimred/html/demOilDnet4.png
+~/mlprojects/dimred/html/demOilDnet5.png
+~/mlprojects/dimred/html/demOilDnet1.png
+~/mlprojects/dimred/html/demOilDnet3.png
+~/mlprojects/dimred/html/demStickDnet1.png
+~/mlprojects/dimred/html/demStickDnet3.png
+~/mlprojects/dimred/html/demCmdsRoadData1.png
+dir: .
+~/mlprojects/dimred/matlab/br1561_6.3.pgm
+~/mlprojects/dimred/matlab/europeDistance.xls
+

@@ -13,4 +13,54 @@ Second release in line with ICML tutorial.
 First release in line with Datamodelling School Talk.
 
 The scripts to run are given in the slides for the lecture.
+
+
+<h3>Examples</h3>
+
+<h4>Sixes Data</h4>
+
+<p>The rotation of the sixes example can be recreated using
+
+<p><code>&gt;&gt; demManifold</code>
+
+<p>The projection of the sixes on to their first two principal components is given below.
+
+<p><center><img src="demManifoldPrint1.png" width="49%"><br>
+<i>Left</i>: Visualisation of the rotated sixes onto the first two principal components. .</center>
+
+<h4>Oil Data</h4>
+
+<p>The results for the oil data with the density network can be recovered using <code>demOilDnet4</code> and <code>demOilDnet5</code>. They 100 samples and 400 samples respectively. Results are shown below.
+
+<p><center><img src="demOilDnet4.png" width="49%"><img src="demOilDnet5.png" width="49%"><br>
+<i>Left</i>: Visualisation of oil data with density networks and 100 samples from the latent distribution, <code>demOilDnet4</code>. Nearest neighbour classification in the latent space leads to 22 errors. <i>Right</i>: Visualisation of oil data with density network and 400 samples from the latent distribution, <code>demOilDnet5</code>. Nearest neighbour classification in the latent space leads to 16 errors.</center>
+
+
+<p>The results for the oil data with the GTM can be recovered using <code>demOilDnet1</code>, <code>demOilDnet2</code> and <code>demOilDnet3</code>. They used grids of 10x10, 20x20 and 30x30 respectively. Results for 10x10 and 30x30 grids are shown below.
+
+<p><center><img src="demOilDnet1.png" width="49%"><img src="demOilDnet3.png" width="49%"><br>
+<i>Left</i>: Visualisation of oil data with GTM and a 10x10 grid, <code>demOilDnet1</code>. Nearest neighbour classification in the latent space leads to 74 errors. <i>Right</i>: Visualisation of oil data with GTM and a 30x30 grid, <code>demOilDnet3</code>. Nearest neighbour classification in the latent space leads to 11 errors.</center>
+
+
+<h4>Stick Man Data</h4>
+
+<p>The results for the stick man data with the GTM can be recovered using <code>demStickDnet1</code>, <code>demStickDnet2</code> and <code>demStickDnet3</code>. They used grids of 10x10, 20x20 and 30x30 respectively. Results for 10x10 and 30x30 grids are shown below.
+
+<p><center><img src="demStickDnet1.png" width="49%"><img src="demStickDnet3.png" width="49%"><br>
+<i>Left</i>: Visualisation of stick data with GTM and a 10x10 grid, <code>demStickDnet1</code>. <i>Right</i>: Visualisation of stick data with GTM and a 30x30 grid, <code>demStickDnet3</code>.</center>
+
+
+<h3>EPSRC Datamodelling Winter School School</h3>
+
+
+<h4>Road Data</h4>
+
+<p>This example shows visualisation of inter city road distances projected onto an actual map of Europe using Procrustes rotation.
+
+<p><code>&gt;&gt; demCmdsRoadData</code>
+
+<p><center><img src="demCmdsRoadData1.png" width="49%"><img src="demCmdsRoadData2.png" width="49%"><br>
+<i>Left</i>: Visualisation of cities from the road data compared to their actual positions in europe. <i>Right</i>: some of the eigenvalues from the distance matrix for the data are negative.</center>
+
+
 </div></body>
