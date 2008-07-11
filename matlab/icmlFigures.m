@@ -1,7 +1,6 @@
 % ICMLFIGURES Plot some of the figures used in ICML tutorial.
 
-
-% MLTOOLS 
+% DIMRED
 
 close all
 colordef white

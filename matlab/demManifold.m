@@ -1,6 +1,6 @@
 % DEMMANIFOLD Show rotation of the digit 6/9.
 
-% MLTOOLS
+% DIMRED
 
 colordef white
 disp('Ready ... rotation of digit 6.')

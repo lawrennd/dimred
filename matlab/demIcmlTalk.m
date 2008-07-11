@@ -1,6 +1,6 @@
 % DEMICMLTALK Show demos for ICML talk in order.
 
-% OXFORD
+% DIMRED
 
 colordef white
 colordef white

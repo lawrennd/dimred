@@ -1,4 +1,4 @@
-% DEMSTICKGTM1 Model the stick man using Probabilistic PCA
+% DEMSTICKPPCA1 Model the stick man using Probabilistic PCA
 
 % DIMRED
 
