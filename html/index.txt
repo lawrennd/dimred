@@ -1,0 +1,16 @@
+<head>
+<title>MATLAB Dimensional Reduction Demos</title>
+</head>
+
+<body><div class="section">
+
+<h1>Matlab Dimensional Reduction Demos</h1>
+
+RELEASEINFORMATION
+
+Second release in line with ICML tutorial.
+
+First release in line with Datamodelling School Talk.
+
+The scripts to run are given in the slides for the lecture.
+</div></body>
