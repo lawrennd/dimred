@@ -12,4 +12,3 @@ dir: html
 dir: .
 ~/mlprojects/dimred/matlab/br1561_6.3.pgm
 ~/mlprojects/dimred/matlab/europeDistance.xls
-
