@@ -19,11 +19,6 @@ latentDim = 2;
 d = size(Y, 2);
 model = ppcaCreate(latentDim, d, Y, options);
 
-% % Optimise the model.
-% iters = 1000;
-% display = 3;
-
-% model = ppcaOptimise(model, display, iters);
 
 % Save the results.
 capName = dataSetName;;

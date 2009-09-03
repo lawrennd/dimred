@@ -72,13 +72,13 @@ if q>7
   set(gca, 'xlim', [-0.2 0.2])
   set(gca, 'ylim', [-0.2 0.2])
   set(gca, 'zlim', [-0.2 0.2])
-  dimredPrepPlot(gca, 'demSixKpca567_0');
+  dimredPrepPlot(gca, 'demSixKpca567-0');
   pos = origPos
   for i = 1:5
     pos = pos + randn(1, 3)*0.4;
     set(gca, 'CameraPosition', pos);
     pause(0.2)
-    dimredPrepPlot(gca, ['demSixKpca567_' num2str(i)]);
+    dimredPrepPlot(gca, ['demSixKpca567-' num2str(i)]);
   end
     
 end

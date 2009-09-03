@@ -13,7 +13,7 @@ experimentNo = 1;
 [Y, lbls] = lvmLoadData(dataSetName);
 
 % Set up model
-options = ppcaOptions('rbf', [10 10]);
+options = ppcaOptions;
 options.optimiser = 'scg';
 latentDim = 2;
 d = size(Y, 2);
@@ -38,3 +38,4 @@ lvmResultsDynamic(model.type, dataSetName, experimentNo, 'vector')
 
 % compute the nearest neighbours errors in latent space.
 errors = lvmNearestNeighbour(model, lbls);
+
