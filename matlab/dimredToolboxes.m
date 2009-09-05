@@ -6,11 +6,11 @@ importLatest('kern');
 importLatest('optimi');
 importLatest('mocap');
 importLatest('prior');
-importTool('fgplvm');
-importTool('gp');
-importTool('datasets');
-importTool('mltools');
-importTool('synth')
+importLatest('fgplvm');
+importLatest('gp');
+importLatest('datasets');
+importLatest('mltools');
+importLatest('synth')
 importLatest('plot2svg');
 importLatest('rotate_image');
 importLatest('m_map');
