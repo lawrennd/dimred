@@ -8,14 +8,30 @@
 
 RELEASEINFORMATION
 
+Third release in line with Interspeech Tutorial.
+
+<h4>Release 0.11</h4>
+
 Second release in line with ICML tutorial.
 
+<h4>Release 0.1</h4>
+
 First release in line with Datamodelling School Talk.
+
 
 The scripts to run are given in the slides for the lecture.
 
 
 <h3>Examples</h3>
+
+<h4>Speech Synthesis</h4>
+
+The synthesis examples are tested only on a Linux machine and they require the SYNTH toolbox (linked to above). 
+
+<p><code>&gt;&gt; demPpcaCmp1</code>
+
+<p>runs PCA on the means. PCA on the durations can also be run with demPpcaDur1. Files for running the GPLVM are demFgplvmCmp1 and demFgplvmCmp2. The second uses a mix of lengthscales.
+
 
 <h4>Sixes Data</h4>
 

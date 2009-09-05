@@ -18,3 +18,4 @@ importLatest('isomap');
 importLatest('lle');
 importLatest('mvu');
 importLatest('sedumi');
+importLatest('voicebox');
