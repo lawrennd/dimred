@@ -27,11 +27,7 @@ display = 3;
 model = leOptimise(model, display, iters);
 
 % Save the results.
-capName = dataSetName;;
-capName(1) = upper(capName(1));
-modelType = model.type;
-modelType(1) = upper(modelType(1));
-save(['dem' capName modelType num2str(experimentNo) '.mat'], 'model');
+modelWriteResult(model, dataSetName, experimentNo);
 
 if exist('printDiagram') & printDiagram
   lvmPrintPlot(model, lbls, capName, experimentNo);

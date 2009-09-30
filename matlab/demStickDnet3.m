@@ -26,16 +26,14 @@ display = 3;
 model = dnetOptimise(model, display, iters);
 
 % Save the results.
-capName = dataSetName;;
-capName(1) = upper(capName(1));
-save(['dem' capName 'Gtm' num2str(experimentNo) '.mat'], 'model');
+modelWriteResult(model, dataSetName, experimentNo);
 
 if exist('printDiagram') & printDiagram
-  lvmPrintPlot(model, lbls, capName, experimentNo);
+  lvmPrintPlot(model, lbls, dataSetName, experimentNo);
 end
 
 % load connectivity matrix
 [void, connect] = mocapLoadTextData('run1');
 % Load the results and display dynamically.
-lvmResultsDynamic('gtm', dataSetName, experimentNo, 'stick', connect)
+lvmResultsDynamic(model.type, dataSetName, experimentNo, 'stick', connect)
 

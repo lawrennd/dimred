@@ -15,7 +15,7 @@ experimentNo = 1;
 % Set up model
 options = ppcaOptions;
 options.optimiser = 'scg';
-latentDim = 2;
+latentDim = 10;
 d = size(Y, 2);
 
 model = ppcaCreate(latentDim, d, Y, options);

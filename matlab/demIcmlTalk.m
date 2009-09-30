@@ -74,7 +74,7 @@ switch r
 end
 disp('Ready ... GTM on stick man.')
 disp('[void, connect] = mocapLoadTextData(''run1'');')
-disp('lvmResultsDynamic(''gtm'', ''stick'', 3, ''stick'', connect)')
+disp('lvmResultsDynamic(''dnet'', ''stick'', 3, ''stick'', connect)')
 r = input('Type ''R'' to run or ''S'' to skip: ', 's');
 switch r
   case {'r', 'R'}
@@ -83,7 +83,7 @@ switch r
    % load connectivity matrix
    [void, connect] = mocapLoadTextData('run1');
    % Load the results and display dynamically.
-   lvmResultsDynamic('gtm', 'stick', 3, 'stick', connect)
+   lvmResultsDynamic('dnet', 'stick', 3, 'stick', connect)
  otherwise
 end
 disp('Ready ... pure GP-LVM on stick man.')
