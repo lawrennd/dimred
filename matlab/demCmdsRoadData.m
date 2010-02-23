@@ -50,7 +50,7 @@ hold on
 
 proj = [xProj yProj];
 
-% DO scaling.
+% Do scaling.
 numData = size(data, 1);
 
 % Get negative half squared distances.
@@ -122,13 +122,13 @@ for i = 1:N
   set(a, 'color', [1 0 0]);
 end
 colormap gray
-dimredPrepPlot(gca, 'demCmdsRoadData1');
+printPlot('demCmdsRoadData1', '../tex/diagrams/', '../html/')
 
 
 figure(2)
 clf
 bar(v(order));
-dimredPrepPlot(gca, 'demCmdsRoadData2'); 
+printPlot('demCmdsRoadData2', '../tex/diagrams/', '../html/')
 
 figure(3)
 clf
@@ -139,7 +139,8 @@ set(gca, 'ylim', [0 48]);
 set(gca, 'xtick', [0 12 24 36 48])
 set(gca, 'ytick', [0 12 24 36 48])
 set(gca, 'Xaxislocation', 'top')
-dimredPrepPlot(gca, ['demCmdsRoadData3']);
+colorbar
+printPlot('demCmdsRoadData3', '../tex/diagrams/', '../html/')
 
 figure(4)
 clf
@@ -151,7 +152,8 @@ set(gca, 'ylim', [0 48]);
 set(gca, 'xtick', [0 12 24 36 48])
 set(gca, 'ytick', [0 12 24 36 48])
 set(gca, 'Xaxislocation', 'top')
-dimredPrepPlot(gca, ['demCmdsRoadData4']);
+colorbar
+printPlot('demCmdsRoadData4', '../tex/diagrams/', '../html/')
 
 figure(5)
 clf
@@ -162,8 +164,5 @@ set(gca, 'ylim', [0 48]);
 set(gca, 'xtick', [0 12 24 36 48])
 set(gca, 'ytick', [0 12 24 36 48])
 set(gca, 'Xaxislocation', 'top')
-fileName = dimredPrepPlot(gca, ['demCmdsRoadData5']);
 colorbar
-%/~
-print('-depsc', fileName)
-%~/
+printPlot('demCmdsRoadData5', '../tex/diagrams/', '../html/')

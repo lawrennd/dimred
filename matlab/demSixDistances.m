@@ -22,44 +22,45 @@ function e = demSixDistances(q, rotate)
 % RETURN e : the residual (unaccounted for) variance in the data to give
 % the classical MDS error.
 % 
-% COPYRIGHT : Neil D. Lawrence, 2008
+% COPYRIGHT : Neil D. Lawrence, 2008, 2010
 % 
 % SEEALSO : prepDemManifold
 
 % DIMRED
-if nargin<2
-  rotate = false;
+  
+  if nargin<2
+    rotate = false;
+  end
+  options.noiseAmplitude = 0;
+  options.subtractMean = false;
+  Y = generateManifoldData('six', options);
+  Y = Y/255;
+  if rotate
+    [U, Lambda] = eig(cov(Y'));
+    Y = U*diag(sqrt(diag(Lambda)));
+  end
+  if nargin < 1
+    q = size(Y, 2);
+  end
+  
+  varY = var(Y);
+  [varY, order] = sort(varY, 2, 'descend');
+  order = order(1:q);
+  distMat = dist2(Y(:, order), Y(:, order))/size(Y, 2);
+  e = 2*size(Y, 1)/(size(Y, 2)*(size(Y, 1)-1))*sum(varY(q+1:end));
+  imagesc(distMat)
+  axis equal
+  set(gca, 'xlim', [0 360]);
+  set(gca, 'ylim', [0 360]);
+  set(gca, 'xtick', [0 90 180 270 360])
+  set(gca, 'ytick', [0 90 180 270 360])
+  set(gca, 'Xaxislocation', 'top')
+  colorbar
+  set(gca, 'fontname', 'times');
+  set(gca, 'fontsize', 20);
+  if rotate
+    printPlot(['demSixDistancesRotate' num2str(q)], '../tex/diagrams/', '../html/')
+  else
+    printPlot(['demSixDistances' num2str(q)], '../tex/diagrams/', '../html/')
+  end
 end
-options.noiseAmplitude = 0;
-options.subtractMean = false;
-Y = generateManifoldData('six', options);
-
-if rotate
-  [U, Lambda] = eig(cov(Y'));
-  Y = U*diag(sqrt(diag(Lambda)));
-end
-if nargin < 1
-  q = size(Y, 2);
-end
-
-varY = var(Y);
-[varY, order] = sort(varY, 2, 'descend');
-order = order(1:q);
-distMat = sqrt(dist2(Y(:, order), Y(:, order)));
-e = 2*size(Y, 1)*size(Y, 1)*sum(varY(q+1:end));
-imagesc(distMat)
-axis equal
-set(gca, 'xlim', [0 360]);
-set(gca, 'ylim', [0 360]);
-set(gca, 'xtick', [0 90 180 270 360])
-set(gca, 'ytick', [0 90 180 270 360])
-set(gca, 'Xaxislocation', 'top')
-if rotate
-  fname = dimredPrepPlot(gca, ['demSixDistancesRotate' num2str(q)]);
-else
-  fname = dimredPrepPlot(gca, ['demSixDistances' num2str(q)]);
-end
-colorbar
-%/~
-print('-depsc', fname);
-%~/

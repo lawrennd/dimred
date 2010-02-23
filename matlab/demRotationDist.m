@@ -7,6 +7,7 @@
 randn('seed', 1e6);
 rand('seed', 1e6);
 
+fontName = 'times';
 numData = 100;
 
 covMat = [4.1 2; 2 1.1];
@@ -22,8 +23,10 @@ set(gca, 'xlim', [-8 8]);
 set(gca, 'ylim', [-4 4]);
 set(gca, 'xtick', [-8 -4 0 4 8]);
 set(gca, 'ytick', [-4 0 4]);
-zeroaxes(gca, 0.02, 18, 'helvetica')
-dimredPrepPlot(gca, 'demRotationDist1')  
+zeroAxes(gca, 0.02, 18, fontName)
+printPlot('demRotationDist1', '../tex/diagrams/', '../html/')
+%/~dimredPrepPlot(gca, 'demRotationDist1')  
+%~/
 pause
 
 projLines = [];
@@ -33,13 +36,16 @@ end
 set(projLines, 'color', [1 0 0]);
 set(projLines, 'visible', 'off');
 set(projLines, 'visible', 'on')
-dimredPrepPlot(gca, 'demRotationDist2')  
+printPlot('demRotationDist2', '../tex/diagrams/', '../html/')
+%/~dimredPrepPlot(gca, 'demRotationDist2')  
+%~/
 pause
 
 delete(projLines)
 set(h, 'ydata', zeros(numData, 1));
-dimredPrepPlot(gca, 'demRotationDist3')  
-
+printPlot('demRotationDist3', '../tex/diagrams/', '../html/')
+%/~dimredPrepPlot(gca, 'demRotationDist3')  
+%~/
 
 % Rotation then Selection
 [R, Lambda] = eig(cov(Y));
@@ -64,8 +70,10 @@ for theta = linspace(0, maxTheta, 5)
   set(gca, 'ylim', [-4 4]);
   set(gca, 'xtick', [-8 -4 0 4 8]);
   set(gca, 'ytick', [-4 0 4]);
-  zeroaxes(gca, 0.02, 18, 'helvetica')
-  dimredPrepPlot(gca, ['demRotationDist4_' num2str(counter)])  
+  zeroAxes(gca, 0.02, 18, fontName)
+  printPlot(['demRotationDist4_' num2str(counter)], '../tex/diagrams/', '../html/')
+  %/~  dimredPrepPlot(gca, ['demRotationDist4_' num2str(counter)])  
+  %~/
   pause
 end
 
@@ -76,10 +84,14 @@ end
 set(projLines, 'color', [1 0 0]);
 set(projLines, 'visible', 'off');
 set(projLines, 'visible', 'on')
-dimredPrepPlot(gca, 'demRotationDist5')  
+printPlot('demRotationDist5', '../tex/diagrams/', '../html/')
+%/~dimredPrepPlot(gca, 'demRotationDist5')  
+%~/
 pause
 
 delete(projLines)
 set(h, 'ydata', zeros(size(Yrot, 1), 1));
-dimredPrepPlot(gca, 'demRotationDist6')  
+printPlot('demRotationDist6', '../tex/diagrams/', '../html/')
+%/~dimredPrepPlot(gca, 'demRotationDist6')  
+%~/
 
