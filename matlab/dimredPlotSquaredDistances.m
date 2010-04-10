@@ -1,4 +1,4 @@
-function [v, handle] = dimredPlotSquaredDistances(Y, fontName, plotName, printDiagram, ax)
+function [v, handle] = dimredPlotSquaredDistances(Y, plotName, ax)
 
 % DIMREDPLOTSQUAREDDISTANCES Helper function for plotting interpoint distances.
 % FORMAT
@@ -6,7 +6,7 @@ function [v, handle] = dimredPlotSquaredDistances(Y, fontName, plotName, printDi
 % histogram alongside the theoretical curves. 
 % ARG plotName : the name of the plot file.
 % ARG Y : the data to plot.
-% ARG printDiagram : whether to plot the diagram.
+% ARG plotName : the plot name.
 % ARG ax : the axes to place the plot on.
 % RETURN d2 : the squared distances vector.
 % RETURN handle : handle to the axes used.
@@ -16,19 +16,13 @@ function [v, handle] = dimredPlotSquaredDistances(Y, fontName, plotName, printDi
  
 % DIMRED
   
-  if nargin < 5 
+  if nargin < 3
     ax = gca;
-    if nargin < 4
-      printDiagram = false;
-      if nargin < 3        
-        plotName = 'none';
-        if nargin < 2
-          fontName = 'times';
-        end
-      end
+    if nargin < 2
+      plotName = 'none';
     end
   end
-  
+
   % normalise data to be variance 1 for each dimension.
   varY = var(Y);
   stdY = sqrt(varY);
@@ -55,7 +49,7 @@ function [v, handle] = dimredPlotSquaredDistances(Y, fontName, plotName, printDi
   bar(ax, x, vals);
   hold on
   a = xlabel(ax, 'squared distance');
-  set(a, 'fontname', fontName);
+  %  set(a, 'fontname', fontName);
   set(a, 'fontsize', 25);
   x = linspace(0, 6, 100);
   ha = plot(ax, x, gammaPdf(x, size(Y, 2)/2, size(Y, 2)/4), 'k-');
@@ -64,16 +58,7 @@ function [v, handle] = dimredPlotSquaredDistances(Y, fontName, plotName, printDi
   set(ax, 'fontname', fontName)
   set(ax, 'fontsize', 20)
 
-  if printDiagram
-    printPlot(plotName, '../tex/diagrams/', '../html/')
-    pos = get(gcf, 'paperposition');
-    origpos = pos;
-    pos(4) = pos(4)/2;
-    set(gcf, 'paperposition', pos);
-    print -depsc ../tex/diagrams/gaussianDistances1000_book.eps
-    pos(4) = pos(4)*2;
-    set(gcf, 'paperposition', pos);
-  end
+  printPlot(plotName, '../tex/diagrams/', '../html/')
 
   handle = gcf;
   

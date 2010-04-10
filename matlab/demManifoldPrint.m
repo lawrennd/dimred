@@ -22,12 +22,12 @@ if nargin < 2
     pcs = [1 2];
   end
 end
-
-colordef white
-
+if ~isoctave
+  colordef white
+end
 
 options.noiseAmplitude = 0;
-options.subtractMean = false;
+options.subtractMean = true;
 Y = generateManifoldData('six', options);
 
 [u, v] = eig(cov(Y'));
@@ -69,9 +69,12 @@ set(gca, 'ylim', [-.1 .1]);
 set(gca, 'xtick', [-.1 -.05  0 .05 .1])
 set(gca, 'ytick', [-.1 -.05  0 .05 .1])
 axis equal
+drawnow
 set(a, 'markersize', 12);
 set(a, 'linewidth', 2);
-set(gca, 'fontname', 'helvetica')
+if ~isoctave
+  set(gca, 'fontname', 'helvetica')
+end
 set(gca, 'fontsize', 20)
 xlabel(['PC no ' num2str(pcs(1))]);
 ylabel(['PC no ' num2str(pcs(2))]);
@@ -91,13 +94,14 @@ for i = indices
   imagesc(reshape(Y(i, :), [64 64]));
   axis off 
   axis image
-  pause(0.1) 
+  %pause(0.1) 
 end
 
 paperPos = get(gcf, 'paperPosition');
 %paperPos(3) = paperPos(3)*2;
 %paperPos(4) = paperPos(4)*2;
 set(gcf, 'paperPosition', paperPos);
+printPlot(['demManifoldPrint_', digits, '_' num2str(pcs(1)) '_' num2str(pcs(2))], '../tex/diagrams/', '../html/')
 
 function y = normalisedPoint(x, plotAxes);
 

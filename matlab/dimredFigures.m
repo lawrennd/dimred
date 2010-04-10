@@ -186,11 +186,11 @@ printPlot(['twoDGaussianSamples', suffix], '../tex/diagrams/', '../html/')
 
 figure
 Y = randn(100, 1000);
-dimredPlotSquaredDistances(Y, fontName, ['gaussianDistances100', suffix], printDiagram);
+dimredPlotSquaredDistances(Y, ['gaussianDistances100', suffix]);
 
 figure
 Y = randn(1000, 1000);
-dimredPlotSquaredDistances(Y, fontName, ['gaussianDistances1000', suffix], printDiagram);
+dimredPlotSquaredDistances(Y, ['gaussianDistances1000', suffix]);
 
 
 
@@ -198,8 +198,7 @@ figure
 W = randn(1000, 2);
 covMat = W*W' +1e-2*eye(1000);
 Y = gsamp(zeros(1, 1000), covMat, 1000);
-v = dimredPlotSquaredDistances(Y, fontName, ['correlatedGaussianDistances1000', ...
-                    suffix], printDiagram);
+v = dimredPlotSquaredDistances(Y, ['correlatedGaussianDistances1000', suffix]);
 
 
 % normalise data to be variance 1 for each dimension.
@@ -238,19 +237,19 @@ end
 
 figure
 Y = lvmLoadData('spellman');
-v = dimredPlotSquaredDistances(Y, fontName, ['spellmanDistances', suffix], printDiagram);
+v = dimredPlotSquaredDistances(Y, ['spellmanDistances', suffix]);
 
 figure
 Y = lvmLoadData('stick');
-v = dimredPlotSquaredDistances(Y, fontName, ['stickDistances', suffix], printDiagram);
+v = dimredPlotSquaredDistances(Y, ['stickDistances', suffix]);
 
 figure
 Y = lvmLoadData('oil');
-v = dimredPlotSquaredDistances(Y, fontName, ['oilDistances', suffix], printDiagram);
+v = dimredPlotSquaredDistances(Y, ['oilDistances', suffix]);
 
 figure
 Y = lvmLoadData('grid_vowels');
-v = dimredPlotSquaredDistances(Y, fontName, ['grid_vowelsDistances', suffix], printDiagram);
+v = dimredPlotSquaredDistances(Y, ['grid_vowelsDistances', suffix]);
 
 lims = [-6 6];
 figure

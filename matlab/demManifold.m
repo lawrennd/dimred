@@ -2,7 +2,9 @@
 
 % DIMRED
 
-colordef white
+if ~isoctave
+  colordef white
+end
 disp('Ready ... rotation of digit 6.')
 disp('demDigitsManifold([1 2], ''all'')')
 r = input('Type ''R'' to run or ''S'' to skip: ', 's');

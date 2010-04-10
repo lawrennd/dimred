@@ -1,7 +1,7 @@
 % DIMREDTOOLBOXES Toolboxes required for the dimensional reduction demos.
 
 importLatest('netlab');
-importLatest('ndlutil');
+importTool('ndlutil');
 importLatest('kern');
 importLatest('optimi');
 importLatest('mocap');

@@ -31,9 +31,13 @@ if nargin < 2
   options.noiseAmplitude = 0.4;
   options.numData = 1600;
   options.seed = 1e6;
+  options.subtractMean = true;
 end
 if ~isfield(options, 'display') || isempty(options.display)
   options.display = false;
+end
+if ~isfield(options, 'subtractMean') || isempty(options.display)
+  options.subtractMean = true;
 end
 if ~isfield(options, 'noiseAmplitude') || isempty(options.noiseAmplitude)
   options.noiseAmplitude = 0.4;
@@ -79,6 +83,9 @@ switch dataType
   
  case 'six'
   sixImage = double(imread('br1561_6.3.pgm'));
+  if isoctave
+    sixImage = sixImage*255;
+  end
   rows = size(sixImage, 1);
   sixImage = uint8(-sixImage+255);
   sixImage = [zeros(rows, 3) sixImage zeros(rows, 4)];
@@ -124,7 +131,9 @@ end
 Y = Y + options.noiseAmplitude.*randn(size(Y));
     
 % remove mean
-Y = Y - repmat(mean(Y),size(Y,1),1);
+if options.subtractMean
+  Y = Y - repmat(mean(Y),size(Y,1),1);
+end
 
 if(options.display)
   colormap jet;

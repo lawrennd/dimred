@@ -13,6 +13,7 @@ function ax = dimredDimensionMass(plotName, fontName)
 % SEEALSO : printPlot
   
 % DIMRED
+
   
 x = 0:1:10;
 D = 2.^x;
@@ -46,9 +47,9 @@ set(gca, 'xticklabel', xtickLabel);
 
 set(gca, 'ytick', [0 0.25 0.5 0.75 1]);
 a = xlabel('dimension');
-set(a, 'fontname', fontName);
+%set(a, 'fontname', fontName);
 set(a, 'fontsize', 25);
-set(gca, 'fontname', fontName)
+%set(gca, 'fontname', fontName)
 set(gca, 'fontsize', 20)
 printPlot(plotName, '../tex/diagrams/', '../html/')
 
