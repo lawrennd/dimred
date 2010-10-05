@@ -11,4 +11,5 @@ dir: html
 ~/mlprojects/dimred/html/demCmdsRoadData1.png
 dir: .
 ~/mlprojects/dimred/matlab/br1561_6.3.pgm
-~/mlprojects/dimred/matlab/europeDistance.xls
+~/mlprojects/dimred/matlab/europeDistance.csv
+~/mlprojects/dimred/matlab/europeCities.csv

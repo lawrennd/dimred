@@ -47,7 +47,7 @@ function e = demSixDistances(q, rotate)
   [varY, order] = sort(varY, 2, 'descend');
   order = order(1:q);
   distMat = dist2(Y(:, order), Y(:, order))/size(Y, 2);
-  e = 2*size(Y, 1)/(size(Y, 2)*(size(Y, 1)-1))*sum(varY(q+1:end));
+  e = 2/(size(Y, 2))*sum(varY(q+1:end));
   imagesc(distMat)
   axis equal
   colorbar
@@ -56,13 +56,4 @@ function e = demSixDistances(q, rotate)
   set(gca, 'xtick', [0 90 180 270 360])
   set(gca, 'ytick', [0 90 180 270 360])
   set(gca, 'Xaxislocation', 'top')
-  if ~isoctave
-    set(gca, 'fontname', 'times');
-  end
-  set(gca, 'fontsize', 20);
-  if rotate
-    printPlot(['demSixDistancesRotate' num2str(q)], '../tex/diagrams/', '../html/')
-  else
-    printPlot(['demSixDistances' num2str(q)], '../tex/diagrams/', '../html/')
-  end
 end
