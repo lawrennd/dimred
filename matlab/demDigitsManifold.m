@@ -20,8 +20,8 @@ options.noiseAmplitude = 0;
 options.subtractMean = false;
 
 Y = generateManifoldData('six', options);
-
-[u, v] = eig(cov(Y'));
+Y = centeringMatrix(size(Y, 1))*Y;
+[u, v] = eig(1/size(Y, 1)*Y*Y');
 v = diag(v);
 
 [void, order] = sort(v);

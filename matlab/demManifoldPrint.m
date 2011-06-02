@@ -79,17 +79,23 @@ set(gca, 'fontsize', 20)
 xlabel(['PC no ' num2str(pcs(1))]);
 ylabel(['PC no ' num2str(pcs(2))]);
 plotAxes = gca;
-xPrime = normalisedPoint(X(indices(1), :), plotAxes);
+xPrime = normalisedPoint(X(indices(1), :), plotAxes) - axesWidth*[0.5 0.5];
 
-imageAxes = axes('position', [xPrime axesWidth axesWidth]);
-im = imagesc(reshape(Y(indices(1), :), [64 64]));
-axis off
-axis image
+%imageAxes = axes('position', [xPrime axesWidth axesWidth]);
+%im = imagesc(reshape(Y(indices(1), :), [64 64]));
+%axis off
+%axis image
+tau = 2*pi;
 colormap gray
 for i = indices
   x = X(i, :);
-  xPrime = normalisedPoint(x, plotAxes);
-  imageAxes = axes('position', [xPrime axesWidth axesWidth]);
+  adj = -[0.5 sin((i-1)*tau/360)]*axesWidth;
+  %adj = axesWidth*[sin((i-1)*tau/360)-0.5 cos((i-1)*tau/360)-0.5];
+  disp([i adj])
+  pause
+  xPrime = normalisedPoint(x, plotAxes) + adj;
+           
+  imageAxes = axes('position', [xPrime  axesWidth axesWidth]);
     
   imagesc(reshape(Y(i, :), [64 64]));
   axis off 
