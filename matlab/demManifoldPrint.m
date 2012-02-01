@@ -87,22 +87,25 @@ xPrime = normalisedPoint(X(indices(1), :), plotAxes) - axesWidth*[0.5 0.5];
 %axis image
 tau = 2*pi;
 colormap gray
+angleMapOffset = asin(X(1, 2)./(sqrt(X(1, 1).^2 + X(1, 2).^2)));
+angleMap = angleMapOffset - linspace(0, 2*pi, 360);
+
+pos = get(plotAxes, 'position');
+xLim = get(plotAxes, 'xlim');
+yLim = get(plotAxes, 'ylim');
+scaleX = (xLim(2) - xLim(1))/pos(3)*axesWidth;
+scaleY = (yLim(2) - yLim(1))/pos(4)*axesWidth;
+
 for i = indices
   x = X(i, :);
-  adj = -[0.5 sin((i-1)*tau/360)]*axesWidth;
-  %adj = axesWidth*[sin((i-1)*tau/360)-0.5 cos((i-1)*tau/360)-0.5];
-  disp([i adj])
-  pause
-  xPrime = normalisedPoint(x, plotAxes) + adj;
-           
-  imageAxes = axes('position', [xPrime  axesWidth axesWidth]);
-    
+  adj = [scaleX*cos(angleMap(i)) scaleY*sin(angleMap(i))];
+  xPrime = normalisedPoint(x+ adj, plotAxes) ;
+  axes('position', [xPrime-[axesWidth axesWidth]  axesWidth axesWidth]);  
   imagesc(reshape(Y(i, :), [64 64]));
-  axis off 
+  axis off
   axis image
-  %pause(0.1) 
 end
-
+print -depsc ../tex/diagrams/demManifoldPrint1.eps
 paperPos = get(gcf, 'paperPosition');
 %paperPos(3) = paperPos(3)*2;
 %paperPos(4) = paperPos(4)*2;
