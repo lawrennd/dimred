@@ -25,7 +25,11 @@ function [Y, colourmap] = generateManifoldData(dataType, options)
 % COPYRIGHT : Neil D. Lawrence, 2008
 
 % DIMRED
-  
+
+fullSpec = which('generateManifoldData');
+ind = max(find(fullSpec == filesep));
+baseDir = fullSpec(1:ind);
+
 if nargin < 2
   options.display = false;
   options.noiseAmplitude = 0.4;
@@ -82,47 +86,65 @@ switch dataType
   colourmap = Y(:,3);
   
  case 'six'
-  sixImage = double(imread('br1561_6.3.pgm'));
-  if isoctave
-    sixImage = sixImage*255;
+  try 
+    load([baseDir 'rotatedSixData.mat']);
+  catch
+    [void, errid] = lasterr;
+    if isoctave || strcmp(errid, 'MATLAB:load:couldNotReadFile');
+      sixImage = dimredLoadSix;
+      rows = size(sixImage, 1);
+      sixImage = uint8(-sixImage+255);
+      sixImage = [zeros(rows, 3) sixImage zeros(rows, 4)];
+      dimOne = size(sixImage);
+      
+      angles = 0:1:359;
+      i = 0;
+      Y = zeros(length(angles), prod(dimOne));
+      for i = 1:length(angles);
+        angle = angles(i);
+        [rotImage, void] = rotate_image(angle, double(sixImage), ones(4, 2));
+        dimTwo = size(rotImage);
+        start = round((dimTwo - dimOne)/2);
+        cropImage = rotImage(start(1)+[1:dimOne(1)], start(2)+[1:dimOne(2)]);
+        Y(i, :) = cropImage(:)';
+      end 
+      save([baseDir 'rotatedSixData.mat'], 'Y');
+    else
+      error(lasterr);
+    end
   end
-  rows = size(sixImage, 1);
-  sixImage = uint8(-sixImage+255);
-  sixImage = [zeros(rows, 3) sixImage zeros(rows, 4)];
-  dimOne = size(sixImage);
-  
-  angles = 0:1:359;
-  i = 0;
-  Y = zeros(length(angles), prod(dimOne));
-  for i = 1:length(angles);
-    angle = angles(i);
-    [rotImage, void] = rotate_image(angle, double(sixImage), ones(4, 2));
-    dimTwo = size(rotImage);
-    start = round((dimTwo - dimOne)/2);
-    cropImage = rotImage(start(1)+[1:dimOne(1)], start(2)+[1:dimOne(2)]);
-    Y(i, :) = cropImage(:)';
-  end 
 
  case 'sixnine'
-  sixAngles = [260:359 0:35];
-  nineAngles = 85:215; 
-  sixImage = double(imread('br1561_6.3.pgm'));
-  rows = size(sixImage, 1);
-  sixImage = uint8(-sixImage+255);
-  sixImage = [zeros(rows, 3) sixImage zeros(rows, 4)];
-  dimOne = size(sixImage);
+  try 
+    load([baseDir 'rotatedSixNineData.mat']);
+  catch
+    [void, errid] = lasterr;
+    if isoctave || strcmp(errid, 'MATLAB:load:couldNotReadFile');
+      sixAngles = [260:359 0:35];
+      nineAngles = 85:215; 
+      sixImage = dimredLoadSix;
+      rows = size(sixImage, 1);
+      sixImage = uint8(-sixImage+255);
+      sixImage = [zeros(rows, 3) sixImage zeros(rows, 4)];
+      dimOne = size(sixImage);
   
-  angles = sort([sixAngles nineAngles]);
-  i = 0;
-  Y = zeros(length(angles), prod(dimOne));
-  for i = 1:length(angles);
-    angle = angles(i);
-    [rotImage, void] = rotate_image(angle, double(sixImage), ones(4, 2));
-    dimTwo = size(rotImage);
-    start = round((dimTwo - dimOne)/2);
-    cropImage = rotImage(start(1)+[1:dimOne(1)], start(2)+[1:dimOne(2)]);
-    Y(i, :) = cropImage(:)';
-  end 
+      angles = sort([sixAngles nineAngles]);
+      i = 0;
+      Y = zeros(length(angles), prod(dimOne));
+      for i = 1:length(angles);
+        angle = angles(i);
+        [rotImage, void] = rotate_image(angle, double(sixImage), ones(4, 2));
+        dimTwo = size(rotImage);
+        start = round((dimTwo - dimOne)/2);
+        cropImage = rotImage(start(1)+[1:dimOne(1)], start(2)+[1:dimOne(2)]);
+        Y(i, :) = cropImage(:)';
+      end
+      save([baseDir 'rotatedSixNineData.mat'], 'Y');
+    else
+      error(lasterr);
+    end
+  end
+
   
  otherwise
   error('Unknown Type');

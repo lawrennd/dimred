@@ -22,9 +22,9 @@ function e = demSixDistances(q, rotate)
 % RETURN e : the residual (unaccounted for) variance in the data to give
 % the classical MDS error.
 % 
-% COPYRIGHT : Neil D. Lawrence, 2008, 2010
+% COPYRIGHT : Neil D. Lawrence, 2008, 2010, 2012
 % 
-% SEEALSO : prepDemManifold
+% SEEALSO : generateManifoldData
 
 % DIMRED
   
@@ -35,25 +35,26 @@ function e = demSixDistances(q, rotate)
   options.subtractMean = false;
   Y = generateManifoldData('six', options);
   Y = Y/255;
+  p = size(Y, 2);
   if rotate
     [U, Lambda] = eig(cov(Y'));
     Y = U*diag(sqrt(diag(Lambda)));
   end
   if nargin < 1
-    q = size(Y, 2);
+    q = p;
   end
   
   varY = var(Y);
   [varY, order] = sort(varY, 2, 'descend');
   order = order(1:q);
-  distMat = dist2(Y(:, order), Y(:, order))/size(Y, 2);
-  e = 2/(size(Y, 2))*sum(varY(q+1:end));
+  distMat = 1/q*dist2(Y(:, order), Y(:, order));
+  e = 2/p*sum(varY(q+1:end));
+  
   imagesc(distMat)
-  axis equal
-  colorbar
   set(gca, 'xlim', [0 360]);
   set(gca, 'ylim', [0 360]);
   set(gca, 'xtick', [0 90 180 270 360])
   set(gca, 'ytick', [0 90 180 270 360])
   set(gca, 'Xaxislocation', 'top')
+  axis equal
 end

@@ -14,7 +14,7 @@ importTool('mltools');
 importTool('synth');
 importLatest('plot2svg');
 importLatest('rotate_image');
-importLatest('m_map');
+importTool('m_map');
 importLatest('isomap');
 importLatest('lle');
 importLatest('mvu');

@@ -14,7 +14,7 @@ experimentNo = 1;
 Y = Y./repmat(sqrt(var(Y)), size(Y, 1), 1);
 % Set up model
 latentDim = 2;
-options = lleOptions;
+options = lleOptions(45);
 options.isWnormalised = false;
 
 d = size(Y, 2);

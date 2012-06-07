@@ -31,6 +31,9 @@ function [v, tv, handle] = dimredPlotSquaredDistances(Y, plotName, ax, plotWidth
   % normalise data to be variance 1 for each dimension.
   varY = var(Y);
   stdY = sqrt(varY);
+  if(any(stdY==0))
+    stdY(find(stdY==0)) = 1.0;
+  end
   Y = Y./repmat(stdY, size(Y, 1), 1);
 
   % Computed squared distances.
