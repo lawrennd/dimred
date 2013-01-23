@@ -28,7 +28,7 @@ v = diag(v);
 order = order(end:-1:1);
 v = v(order);
 u = u(:, order);
-X = u*diag(sqrt(v));
+X = real(u*diag(sqrt(v)));
 
 X = X(:, pcs);
 Y = uint8(-(double(Y-255)));

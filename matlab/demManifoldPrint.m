@@ -1,4 +1,4 @@
-function demManifoldPrint(pcs, digits);
+function demManifoldPrint(pcs, digits, printPlot, negative);
 
 % DEMMANIFOLDPRINT Print the principal components of the artificial digits data set.
 % FORMAT
@@ -16,16 +16,21 @@ function demManifoldPrint(pcs, digits);
   
 % DIMRED
 
-if nargin < 2
-  digits = 'all'
-  if nargin < 1
-    pcs = [1 2];
+if nargin < 4
+  negative = false;
+  if nargin < 3
+    printPlot = false;
+    if nargin < 2
+      digits = 'all'
+      if nargin < 1
+        pcs = [1 2];
+      end
+    end
+    if ~isoctave
+      colordef white
+    end
   end
 end
-if ~isoctave
-  colordef white
-end
-
 options.noiseAmplitude = 0;
 options.subtractMean = true;
 Y = generateManifoldData('six', options);
@@ -41,9 +46,9 @@ X = u;
 %X = u*diag(sqrt(v));
 
 X = X(:, pcs);
-
-Y = uint8(-(double(Y-255)));
-
+if ~negative
+  Y = uint8(-(double(Y-255)));
+end
 axesWidth = 0.05;
 clf
 
@@ -88,30 +93,39 @@ xPrime = normalisedPoint(X(indices(1), :), plotAxes) - axesWidth*[0.5 0.5];
 tau = 2*pi;
 colormap gray
 angleMapOffset = asin(X(1, 2)./(sqrt(X(1, 1).^2 + X(1, 2).^2)));
-angleMap = angleMapOffset - linspace(0, 2*pi, 360);
+angleMap = angleMapOffset - linspace(0, tau, 360);
 
 pos = get(plotAxes, 'position');
 xLim = get(plotAxes, 'xlim');
 yLim = get(plotAxes, 'ylim');
 scaleX = (xLim(2) - xLim(1))/pos(3)*axesWidth;
 scaleY = (yLim(2) - yLim(1))/pos(4)*axesWidth;
-
-for i = indices
-  x = X(i, :);
-  adj = [scaleX*cos(angleMap(i)) scaleY*sin(angleMap(i))];
-  xPrime = normalisedPoint(x+ adj, plotAxes) ;
-  axes('position', [xPrime-[axesWidth axesWidth]  axesWidth axesWidth]);  
-  imagesc(reshape(Y(i, :), [64 64]));
+count = 0;
+for i = 1:length(indices)
+  ax(i) = axes;
+  if negative
+    image(reshape(Y(indices(i), :), [64 64]));
+  else
+    imagesc(reshape(Y(indices(i), :), [64 64]));
+  end
   axis off
   axis image
 end
-print -depsc ../tex/diagrams/demManifoldPrint1.eps
-paperPos = get(gcf, 'paperPosition');
-%paperPos(3) = paperPos(3)*2;
-%paperPos(4) = paperPos(4)*2;
-set(gcf, 'paperPosition', paperPos);
-printPlot(['demManifoldPrint_', digits, '_' num2str(pcs(1)) '_' num2str(pcs(2))], '../tex/diagrams/', '../html/')
-
+for i = 1:length(indices)
+  x = X(indices(i), :)*1.15;
+  %xPrime = normalisedPoint(x, plotAxes) ;
+  %adj = 0.5*[scaleX scaleY]; %[scaleX*cos(angleMap(i)) scaleY*sin(angleMap(i))];
+  xPrime = normalisedPoint(x, plotAxes) ;
+  set(ax(i), 'position', [xPrime-0.5*axesWidth axesWidth axesWidth]);  
+end
+if printPlot
+  print -depsc ../tex/diagrams/demManifoldPrint1.eps
+  paperPos = get(gcf, 'paperPosition');
+  %paperPos(3) = paperPos(3)*2;
+  %paperPos(4) = paperPos(4)*2;
+  set(gcf, 'paperPosition', paperPos);
+  printPlot(['demManifoldPrint_', digits, '_' num2str(pcs(1)) '_' num2str(pcs(2))], '../tex/diagrams/', '../html/')
+end
 function y = normalisedPoint(x, plotAxes);
 
 % NORMALISEDPOINT Helper function for getting the normalised point.
