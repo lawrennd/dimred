@@ -1,16 +1,17 @@
 % DIMREDTOOLBOXES Toolboxes required for the dimensional reduction demos.
 
+importTool('GPmat')
 importLatest('netlab');
-importTool('ndlutil');
-importLatest('kern');
-importLatest('optimi');
-importLatest('mocap');
-importLatest('prior');
+% importTool('ndlutil');
+% importLatest('kern');
+% importLatest('optimi');
+% importLatest('mocap');
+% importLatest('prior');
 importTool('vargplvm');
-importTool('fgplvm');
-importTool('gp');
-importTool('datasets');
-importTool('mltools');
+% importTool('fgplvm');
+% importTool('gp');
+% importTool('datasets');
+% importTool('mltools');
 importTool('synth');
 importLatest('plot2svg');
 importLatest('rotate_image');
