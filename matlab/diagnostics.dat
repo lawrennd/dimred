@@ -1,0 +1,47 @@
+Files not tagged as in toolbox: 
+bookFigures.m
+demStickManifoldPrint3.m
+
+Files not commented:
+
+Files not in CVS or SVN:
+demStickManifoldPrint3.m
+
+Dependent toolbox problems
+File Comments Removed
+  printDiagram = 1;
+ removed from exported demStickManifoldPrint3.m
+print('-depsc', fname);
+ removed from exported demCmdsSixes.m
+print('-depsc', fileName)
+ removed from exported demCmdsRoadData.m
+print('-depsc', epsFileName)
+ removed from exported dimredPrepPlot.m
+par = get(ax, 'parent');
+ removed from exported dimredPrepPlot.m
+origPaperPos = get(par, 'paperPosition');
+ removed from exported dimredPrepPlot.m
+paperPos = origPaperPos;
+ removed from exported dimredPrepPlot.m
+set(par, 'paperPosition', paperPos);
+ removed from exported dimredPrepPlot.m
+print('-dpng', pngFileName);
+ removed from exported dimredPrepPlot.m
+set(par, 'paperPosition', origPaperPos);
+ removed from exported dimredPrepPlot.m
+print('-depsc', fname);
+ removed from exported demSixKpca.m
+print('-depsc', fname);
+ removed from exported demSixKpca.m
+  printDiagram = 1;
+ removed from exported demStickManifoldPrint.m
+  if exist('printDiagram') && printDiagram
+ removed from exported demStickManifoldPrint.m
+    fileName = ['dem' capName 'Pcs' num2str(pcs(1)) '_' num2str(pcs(2))];
+ removed from exported demStickManifoldPrint.m
+    printPlot(fileName, '../tex/diagrams', '../html');
+ removed from exported demStickManifoldPrint.m
+  end
+ removed from exported demStickManifoldPrint.m
+print('-depsc', fname);
+ removed from exported demSixDistances.m
