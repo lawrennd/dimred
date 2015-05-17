@@ -7,7 +7,7 @@ Release Information
 
 **Current release is 0.12**.
 
-As well as downloading the DIMRED software you need to obtain the toolboxes specified below. **These can be downloaded using the *same* password you get from registering for the DIMRED software.**
+As well as downloading the DIMRED software you need to obtain the toolboxes specified below.
 
 | **Toolbox**                                           | **Version** |
 |-------------------------------------------------------|-------------|
