@@ -45,9 +45,12 @@ First release in line with Datamodelling School Talk. The scripts to run are giv
 #### Speech Synthesis
 
 The synthesis examples are tested only on a Linux machine and they require the SYNTH toolbox (linked to above).
-`>> demPpcaCmp1`
 
-runs PCA on the means. PCA on the durations can also be run with demPpcaDur1. Files for running the GPLVM are demFgplvmCmp1 and demFgplvmCmp2. The second uses a mix of lengthscales.
+```matlab
+>> demPpcaCmp1
+```
+
+Runs PCA on the means. PCA on the durations can also be run with demPpcaDur1. Files for running the GPLVM are demFgplvmCmp1 and demFgplvmCmp2. The second uses a mix of lengthscales.
 
 #### Sixes Data
 
@@ -59,8 +62,10 @@ The rotation of the sixes example can be recreated using
 
 The projection of the sixes on to their first two principal components is given below.
 
-![](demManifoldPrint1.png)
- *Left*: Visualisation of the rotated sixes onto the first two principal components. .
+![](demManifoldPrint_all_1_2.png)
+
+*Left*: Visualisation of the rotated sixes onto the first two principal components. .
+
 #### Oil Data
 
 The results for the oil data with the density network can be recovered using `demOilDnet4` and `demOilDnet5`. They 100 samples and 400 samples respectively. Results are shown below.
