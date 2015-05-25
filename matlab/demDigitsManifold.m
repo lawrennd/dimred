@@ -5,8 +5,7 @@ function demDigitsManifold(pcs, digits);
 % DESC plots the principal components of the artificially rotated digit
 % data set and then shows each data point next to its projected position
 % in turn to give a small movie.
-% ARG pcs : the principal components to display as a vector (defaults to
-% [2 3]).
+% ARG pcs : the principal components to display as a vector.
 % ARG digits : a string specifying whether to plot all the data or just
 % the portions that could be a six or a nine. For all the data specify
 % 'all' for just the six and nine specify 'sixnine';
@@ -21,15 +20,15 @@ options.noiseAmplitude = 0;
 options.subtractMean = false;
 
 Y = generateManifoldData('six', options);
-
-[u, v] = eig(cov(Y'));
+Y = centeringMatrix(size(Y, 1))*Y;
+[u, v] = eig(1/size(Y, 1)*Y*Y');
 v = diag(v);
 
 [void, order] = sort(v);
 order = order(end:-1:1);
 v = v(order);
 u = u(:, order);
-X = u*diag(sqrt(v));
+X = real(u*diag(sqrt(v)));
 
 X = X(:, pcs);
 Y = uint8(-(double(Y-255)));
